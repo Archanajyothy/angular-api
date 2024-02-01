@@ -1,0 +1,21 @@
+<div class="container">
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Email</th>
+              <th scope="col">Title</th>
+              <th scope="col">Mob.No.</th>
+            </tr>
+          </thead>
+          <tbody id="table_body" *ngFor="let list of tabData">
+              <tr>
+                <td>{{list.id}}</td>
+                <td>{{list.userId}}</td>
+                <td>{{list.title}}</td>
+                <td>{{list.body}}</td> 
+            </tr>
+            
+          </tbody>
+    </table>
+</div>

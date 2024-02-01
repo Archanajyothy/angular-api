@@ -1,0 +1,20 @@
+<div class="form-style-5">
+    <form [formGroup] = "myForm" (ngSubmit) = "$event.preventDefault(); submitForm()">
+    <fieldset>
+
+    <label for="job">Id:</label>
+    <input type="text" name="id" formControlName="formId" placeholder="Enter Id">
+
+    <label for="job">Email:</label>
+    <input type="email" name="email" formControlName="formEmail" placeholder="Enter Email">
+    
+    <label for="job">Title:</label>
+    <input type="text" name="title" formControlName="formTitle" placeholder="Enter Title">
+    
+    <label for="job">Mob.no.:</label>
+    <input type="text" name="mob" formControlName="formMobNo" placeholder="Enter Mobile No.">
+    
+    </fieldset>
+    <button class="btn">Submit</button>
+</form>
+    </div>
