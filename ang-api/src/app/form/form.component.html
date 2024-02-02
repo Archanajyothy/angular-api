@@ -1,20 +1,52 @@
 <div class="form-style-5">
     <form [formGroup] = "myForm" (ngSubmit) = "$event.preventDefault(); submitForm()">
-    <fieldset>
+        <fieldset>
 
-    <label for="job">Id:</label>
-    <input type="text" name="id" formControlName="formId" placeholder="Enter Id">
+        <label for="job">Id:</label>
+        <input type="text" name="id" formControlName="userId" placeholder="Enter Id">
+            <span style="color: red;" *ngIf="myForm.get('userId')!.invalid && (myForm.get('userId')?.dirty || myForm.get('userId')?.touched)" >
+                <small class="text-danger"
+                *ngIf="myForm.get('userId')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="myForm.get('id')!.invalid && (myForm.get('id')?.dirty || myForm.get('id')?.touched)" >
+                <small class="text-danger"
+                *ngIf="myForm.get('id')!.hasError('email')">
+                    Enter valid email</small>
+            </span>
 
-    <label for="job">Email:</label>
-    <input type="email" name="email" formControlName="formEmail" placeholder="Enter Email">
-    
-    <label for="job">Title:</label>
-    <input type="text" name="title" formControlName="formTitle" placeholder="Enter Title">
-    
-    <label for="job">Mob.no.:</label>
-    <input type="text" name="mob" formControlName="formMobNo" placeholder="Enter Mobile No.">
-    
-    </fieldset>
-    <button class="btn">Submit</button>
-</form>
-    </div>
+        <label for="job">Email:</label>
+        <input type="email" name="email" formControlName="id" placeholder="Enter Email">
+            <span style="color: red;" *ngIf="myForm.get('id')!.invalid && (myForm.get('id')?.dirty || myForm.get('id')?.touched)" >
+                <small class="text-danger"
+                *ngIf="myForm.get('id')!.hasError('required')">
+                    Required field</small>
+            </span>
+        
+        <label for="job">Title:</label>
+        <input type="text" name="title" formControlName="title" placeholder="Enter Title">
+            <span style="color: red;" *ngIf="myForm.get('title')!.invalid && (myForm.get('title')?.dirty || myForm.get('title')?.touched)" >
+                <small class="text-danger"
+                *ngIf="myForm.get('title')!.hasError('required')">
+                    Required field</small>
+            </span>
+        
+        <label for="job">Mob.no.:</label>
+        <input type="text" name="mob" formControlName="body" placeholder="Enter Mobile No.">
+            <span style="color: red;" *ngIf="myForm.get('body')!.invalid && (myForm.get('body')?.dirty || myForm.get('body')?.touched)" >
+                <small class="text-danger"
+                *ngIf="myForm.get('body')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="myForm.get('body')?.invalid && (myForm.get('body')?.dirty || myForm.get('body')?.touched)" >
+                <small class="text-danger"
+                    *ngIf="myForm.get('body')?.hasError('maxlength')">
+                    Enter 10 digits
+                </small>
+            </span>
+            
+        
+        </fieldset>
+        <button class="btn" >Submit</button>
+    </form>
+</div>

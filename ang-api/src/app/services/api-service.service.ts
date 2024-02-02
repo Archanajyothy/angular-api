@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,8 @@ import { Injectable } from '@angular/core';
 export class ApiServiceService {
 
   myData: any;
-  pData: any
+  
+   behaviorSubject = new BehaviorSubject({})
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +18,7 @@ export class ApiServiceService {
     return this.myData
    
   }
+
 
   postData(formData: any){
     return this.http.post('https://jsonplaceholder.typicode.com/posts',formData,{})
