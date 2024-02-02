@@ -12,10 +12,10 @@ export class FormComponent implements OnInit {
   constructor(private apiService : ApiServiceService){}
 
   myForm = new FormGroup({
-    userId: new FormControl('',[Validators.required]),
+    userId: new FormControl('',[Validators.required, Validators.maxLength(7)]),
     id: new FormControl('',[Validators.required, Validators.email]),
     title: new FormControl('',[Validators.required]),
-    body: new FormControl('',[Validators.required, Validators.minLength(0)])
+    body: new FormControl('',[Validators.required, Validators.minLength(10), Validators.maxLength(10)])
   })
   
   formData : any[] = [];
@@ -32,7 +32,7 @@ export class FormComponent implements OnInit {
       // console.log(this.formData);
     })
 
-        
+    this.myForm.reset() 
   }
 
 }
