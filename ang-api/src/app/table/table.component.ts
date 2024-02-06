@@ -8,46 +8,31 @@ import { ApiServiceService } from '../services/api-service.service';
 })
 export class TableComponent implements OnInit{
   tabData: any[] = [];
-  newTabData: any;
+  newArray: any[] = []
 
   constructor(private apiService : ApiServiceService) { }
 
+  apiUrl = 'https://jsonplaceholder.typicode.com/posts'
+
   ngOnInit(): void {
-    this.apiService.getData().
+    this.apiService.getData(this.apiUrl).
     subscribe((res: any)=> {
       this.tabData = res
     })
 
 
     this.apiService.behaviorSubject.subscribe((res) => {
-      this.newTabData = res
+      this.newArray = Object.values(res)
       console.log('from newTabData');
-      
-       console.log(this.newTabData);
+       //console.log(this.newArray);
        this.appendData()
     })
-     //console.log(this.tabData);
   }
-
   
-  appendData(){
-    console.log('inside function');
-    
-    if (this.newTabData && this.newTabData['0'] ) {
-      console.log('inside if');
-      
-      const innerObject = this.newTabData['0'];
-
-      const newData = {
-        id: innerObject.id, 
-        userId: innerObject.userId, 
-        title: innerObject.title,
-        body: innerObject.body,
-      };
-  
-      this.tabData.unshift(newData);
-      console.log('ividethi');
-      
+  appendData(){    
+    if (this.newArray && this.newArray.length > 0 ) {
+      const arrIndex = this.newArray.length-2
+      this.tabData.unshift(this.newArray[arrIndex]);
       console.log(this.tabData);
     }
   }

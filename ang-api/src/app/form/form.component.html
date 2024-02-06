@@ -46,19 +46,25 @@
             </span>
             <span style="color: red;" *ngIf="myForm.get('body')?.invalid && (myForm.get('body')?.dirty || myForm.get('body')?.touched)" >
                 <small class="text-danger"
+                    *ngIf="myForm.get('body')?.hasError('pattern')">
+                    Only numbers allowed.
+                </small>
+                <br>
+            </span>
+            <span style="color: red;" *ngIf="myForm.get('body')?.invalid && (myForm.get('body')?.dirty || myForm.get('body')?.touched)" >
+                <small class="text-danger"
                     *ngIf="myForm.get('body')?.hasError('minlength')">
-                    10 digits required
+                    10 digits required.
                 </small>
             </span>
             <span style="color: red;" *ngIf="myForm.get('body')?.invalid && (myForm.get('body')?.dirty || myForm.get('body')?.touched)" >
                 <small class="text-danger"
                     *ngIf="myForm.get('body')?.hasError('maxlength')">
-                    Morethan 10 digits
+                    Morethan 10 digits.
                 </small>
             </span>
-            
         
         </fieldset>
-        <button class="btn" >Submit</button>
+        <button class="btn" [disabled] = "!myForm.valid" >Submit</button>
     </form>
 </div>
